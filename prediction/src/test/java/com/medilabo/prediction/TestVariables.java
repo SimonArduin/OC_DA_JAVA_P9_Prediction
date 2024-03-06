@@ -19,7 +19,7 @@ public class TestVariables {
         patient = new Patient("firstName", "lastName", datePast, Patient.Gender.MALE, "adress", "0123456789");
         patient.setIdPatient(1);
         // initialize note with 1 trigger
-        note = new Note(patient.getIdPatient(), patient.getFirstName(), "Taille");
+        note = new Note(patient.getIdPatient(), "Taille");
         noteList = List.of(note);
     }
 
