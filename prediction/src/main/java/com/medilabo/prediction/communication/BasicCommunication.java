@@ -6,7 +6,7 @@ import org.springframework.http.HttpHeaders;
 import java.nio.charset.Charset;
 import java.util.Base64;
 
-public class BasicCommunication {
+public abstract class BasicCommunication {
     @Value("${login}")
     private String LOGIN;
     @Value("${password}")

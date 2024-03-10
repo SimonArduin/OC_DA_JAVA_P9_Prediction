@@ -3,6 +3,7 @@ package com.medilabo.prediction.unit;
 import com.medilabo.prediction.TestVariables;
 import com.medilabo.prediction.communication.NoteCommunication;
 import com.medilabo.prediction.communication.PatientCommunication;
+import com.medilabo.prediction.domain.Note;
 import com.medilabo.prediction.service.PredictionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -94,6 +95,14 @@ public class PredictionServiceTests extends TestVariables {
             note.setNote(null);
             int actual = predictionService.calculateTriggerNumber(noteList);
             assertEquals(0, actual);
+        }
+
+        @Test
+        public void calculateTriggerNumberTestIfMultipleTriggersInOneNote() {
+            setTriggerNumbers(0);
+            noteList.add(new Note(patient.getIdPatient(), "Hémoglobine A1C, Microalbumine, Taille, Poids"));
+            int actual = predictionService.calculateTriggerNumber(noteList);
+            assertEquals(4, actual);
         }
 
     }
