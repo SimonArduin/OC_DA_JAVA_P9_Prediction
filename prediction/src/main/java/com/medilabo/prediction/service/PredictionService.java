@@ -26,6 +26,9 @@ public class PredictionService {
 
     private static final Logger logger = LoggerFactory.getLogger(PredictionService.class);
 
+    /**
+     * This list contains all the triggers that will be searched for in the notes.
+     */
     private List<String> triggerList = List.of(
             "Hémoglobine A1C",
             "Microalbumine",
@@ -79,7 +82,8 @@ public class PredictionService {
     }
 
     /**
-     * This method counts the number of times any word from the trigger list is found in a list of notes
+     * This method counts the number of times any string from the trigger list is found in a list of notes.
+     * The algorithm is not case-sensitive.
      * @param noteList the list of notes to inspect
      * @return an int of the number of triggers found
      */

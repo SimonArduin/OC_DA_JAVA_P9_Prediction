@@ -3,9 +3,6 @@ package com.medilabo.prediction.communication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 
-import java.nio.charset.Charset;
-import java.util.Base64;
-
 public abstract class BasicCommunication {
     @Value("${login}")
     private String LOGIN;
@@ -14,13 +11,13 @@ public abstract class BasicCommunication {
 
     public HttpHeaders headers;
 
+    /**
+     * This method sets headers with basic authentication.
+     * The authentication information is found in a properties file.
+     */
     public void setHeaders() {
-        String auth = LOGIN + ":" + PASSWORD;
-        byte[] encodedAuth = Base64.getEncoder().encode(
-                auth.getBytes(Charset.forName("US-ASCII")));
-        String authHeader = "Basic " + new String(encodedAuth);
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", authHeader);
+        headers.setBasicAuth(LOGIN, PASSWORD);
         this.headers = headers;
     }
 }

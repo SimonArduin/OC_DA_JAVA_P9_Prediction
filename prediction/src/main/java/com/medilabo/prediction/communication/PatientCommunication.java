@@ -22,6 +22,7 @@ public class PatientCommunication extends BasicCommunication {
         logger.info("get patient with id " + patientId);
         setHeaders();
 
+        // send request to patient microservice
         HttpEntity request = new HttpEntity<>(null, headers);
         Patient patient = new RestTemplate().exchange(PATIENT_URL + "get?id=" + patientId, HttpMethod.GET, request, Patient.class).getBody();
 

@@ -16,6 +16,12 @@ public class PredictionController {
 
     private static final Logger logger = LoggerFactory.getLogger(PredictionController.class);
 
+    /**
+     * This method receives requests for risk prediction of a certain patient having diabetes,
+     * and returns a description of the risk level.
+     * @param id The id of the patient
+     * @return A ResponseEntity with a String in its body
+     */
     @GetMapping("get")
     public ResponseEntity getPrediction(int id) {
 
